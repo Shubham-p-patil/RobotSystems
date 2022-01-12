@@ -1,12 +1,24 @@
 import sys
+
+from week2.maneuvering import forwardBackward
 sys.path.append(r'/home/pi/RobotSystems/lib')
+
+import logging
+from logdecorator import log_on_start , log_on_end , log_on_error
+logging_format = "%( asctime ) s : %( message ) s "
+logging . basicConfig ( format = logging_format , level = logging . INFO ,
+datefmt ="% H :% M :% S ")
+
 from utils import reset_mcu
 reset_mcu()
 
 from picarx import Picarx
 import time
 
-if __name__ == "__main__":
+
+@log_on_start(logging.DEBUG, "Start maneuvering...")
+@log_on_end(logging.DEBUG, "Motion executed successfully")
+def forawrdBackward():
     try:
         px = Picarx()
         
@@ -19,3 +31,7 @@ if __name__ == "__main__":
         time.sleep(1)
     finally:
         px.forward(0)
+
+if __name__ == "__main__":
+
+    forwardBackward()
