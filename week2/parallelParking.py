@@ -49,8 +49,8 @@ if __name__ == "__main__":
         px.forward(0)
         time.sleep(1)
         
-        px.forward(20)
-        time.sleep(0.6)   
+        px.forward(30)
+        time.sleep(0.3)   
 
         px.forward(0)
         time.sleep(1)
