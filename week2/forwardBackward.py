@@ -1,6 +1,4 @@
 import sys
-
-from week2.maneuvering import forwardBackward
 sys.path.append(r'/home/pi/RobotSystems/lib')
 
 import logging
@@ -18,7 +16,7 @@ import time
 
 @log_on_start(logging.DEBUG, "Start maneuvering...")
 @log_on_end(logging.DEBUG, "Motion executed successfully")
-def forawrdBackward():
+def forwardBackward():
     try:
         px = Picarx()
         
