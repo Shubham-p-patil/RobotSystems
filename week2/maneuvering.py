@@ -152,7 +152,7 @@ def parallelParking():
 
 if __name__ == "__main__":
     while True:
-        command = input("Select from the three maneuvering options below:\n(a) Forward and backward in straight lines or with different steering angles\n(b) Parallel-parking left and right\n(c) Three-point turning (K-turning) with initial turn to the left or right\n(d) Exit")
+        command = input("Select from the three maneuvering options below:\n(a) Forward and backward in straight lines or with different steering angles\n(b) Parallel-parking left and right\n(c) Three-point turning (K-turning) with initial turn to the left or right\n(d) Exit\nEnter Here : ")
         
         if command == "a":
             forwardBackward()
