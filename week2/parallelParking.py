@@ -37,7 +37,7 @@ if __name__ == "__main__":
         time.sleep(1)
 
         px.backward(20)
-        time.sleep(0.3)
+        time.sleep(0.7)
         
         px.forward(0)
         time.sleep(1)
