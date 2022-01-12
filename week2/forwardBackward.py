@@ -3,10 +3,13 @@ sys.path.append(r'/home/pi/RobotSystems/lib')
 
 import logging
 from logdecorator import log_on_start , log_on_end , log_on_error
-logging_format = "%( asctime ) s : %( message ) s "
-logging.basicConfig( format = logging_format , level = logging.INFO , datefmt ="% H :% M :% S ")
-logging.getLogger().setLevel( logging.DEBUG )
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
 
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S')
+    
 from utils import reset_mcu
 reset_mcu()
 
