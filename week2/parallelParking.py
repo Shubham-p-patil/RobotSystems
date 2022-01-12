@@ -16,7 +16,7 @@ if __name__ == "__main__":
         px.forward(0)
         time.sleep(1)
 
-        for angle in range(0,20):
+        for angle in range(0,45):
             px.set_dir_servo_angle(angle)
             time.sleep(0.01)   
         
@@ -29,7 +29,20 @@ if __name__ == "__main__":
         px.forward(0)
         time.sleep(1)
 
-        for angle in range(20,-20,-1):
+        for angle in range(45,-45,-1):
+            px.set_dir_servo_angle(angle)
+            time.sleep(0.01)   
+        
+        px.forward(0)
+        time.sleep(1)
+
+        px.backward(20)
+        time.sleep(0.3)
+        
+        px.forward(0)
+        time.sleep(1)
+
+        for angle in range(-45,45):
             px.set_dir_servo_angle(angle)
             time.sleep(0.01)   
     
@@ -42,7 +55,7 @@ if __name__ == "__main__":
         px.forward(0)
         time.sleep(1)
         
-        for angle in range(-20,0):
+        for angle in range(45,0,-1):
             px.set_dir_servo_angle(angle)
             time.sleep(0.01)
         
