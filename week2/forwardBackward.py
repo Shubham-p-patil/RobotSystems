@@ -1,5 +1,7 @@
-import sys
-sys.path.append(r'/home/pi/RobotSystems/lib')
+import sys,os
+# sys.path.append(r'/home/pi/RobotSystems/lib')
+_path = os.getcwd() + '/lib'
+sys.path.append(_path)
 
 import logging
 from logdecorator import log_on_start , log_on_end , log_on_error
@@ -9,11 +11,8 @@ logger.setLevel(logging.DEBUG)
 logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S')
-    
-from utils import reset_mcu
-reset_mcu()
 
-from picarx import Picarx
+from picarx_improved import Picarx
 import time
 
 
@@ -34,5 +33,5 @@ def forwardBackward():
         px.forward(0)
 
 if __name__ == "__main__":
-
+    
     forwardBackward()
