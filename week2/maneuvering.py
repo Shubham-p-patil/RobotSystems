@@ -97,7 +97,7 @@ def forwardBackward():
         px.forward(0)
 
 def parallelParking(direction):
-    wheel_direction = None
+    wheel_direction = 1
     if direction == 'l':
         wheel_direction *= -1
     try:
