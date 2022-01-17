@@ -1,13 +1,14 @@
 # from ezblock import Servo,PWM,fileDB,Pin,ADC
 
 import time
+import atexit
 try :
     from servo import Servo 
     from pwm import PWM
     from pin import Pin
     from adc import ADC
     from filedb import fileDB
-        
+    
     from utils import reset_mcu
     reset_mcu()
 
@@ -16,6 +17,17 @@ except ImportError :
     print (" This computer does not appear to be a PiCar - X system ( ezblock is not present ) . Shadowing hardware calls with substitute functions ")
     from sim_ezblock import *
 
+import logging
+from logdecorator import log_on_start , log_on_end , log_on_error
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S')
+
+@log_on_start(logging.DEBUG, "Start importing Picar-X")
+@log_on_end(logging.DEBUG, "Imported Picar-X Improved successfully")
 class Picarx(object):
     PERIOD = 4095
     PRESCALER = 10
@@ -54,7 +66,7 @@ class Picarx(object):
             pin.period(self.PERIOD)
             pin.prescaler(self.PRESCALER)
 
-
+        atexit.register(self.stop)
 
     def set_motor_speed(self,motor,speed):
         try:

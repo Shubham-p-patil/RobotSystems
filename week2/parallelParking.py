@@ -3,10 +3,14 @@ sys.path.append(r'/home/pi/RobotSystems/lib')
 from utils import reset_mcu
 reset_mcu()
 
-from picarx import Picarx
+from picarx import Picarx     
 import time
 
 if __name__ == "__main__":
+    wheel_direction = 1
+    direction =1
+    if direction == 'l':
+        wheel_direction *= -1
     try:
         px = Picarx()
 
@@ -16,7 +20,7 @@ if __name__ == "__main__":
         px.forward(0)
         time.sleep(1)
 
-        for angle in range(0,45):
+        for angle in range(0,wheel_direction*45,wheel_direction):
             px.set_dir_servo_angle(angle)
             time.sleep(0.01)   
         
@@ -29,7 +33,7 @@ if __name__ == "__main__":
         px.forward(0)
         time.sleep(1)
 
-        for angle in range(45,-45,-1):
+        for angle in range(wheel_direction*45,wheel_direction*-45,wheel_direction*-1):
             px.set_dir_servo_angle(angle)
             time.sleep(0.01)   
         
@@ -42,7 +46,7 @@ if __name__ == "__main__":
         px.forward(0)
         time.sleep(1)
 
-        for angle in range(-45,45):
+        for angle in range(wheel_direction*-45,wheel_direction*45,wheel_direction):
             px.set_dir_servo_angle(angle)
             time.sleep(0.01)   
     
@@ -55,7 +59,7 @@ if __name__ == "__main__":
         px.forward(0)
         time.sleep(1)
         
-        for angle in range(45,0,-1):
+        for angle in range(wheel_direction*45,0,wheel_direction*-1):
             px.set_dir_servo_angle(angle)
             time.sleep(0.01)
         
