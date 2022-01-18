@@ -1,5 +1,7 @@
 import sys
-sys.path.append(r'/home/pi/RobotSystems/lib')
+# sys.path.append(r'/home/pi/RobotSystems/lib')
+_path = os.getcwd() + '/lib'
+sys.path.append(_path)
 from utils import reset_mcu
 reset_mcu()
 
@@ -12,10 +14,11 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S')
 
-from picarx import Picarx
+from picarx_improved import Picarx
 import time
 
-@log_on_start(logging.DEBUG, "Start maneuvering...")
+
+@log_on_start(logging.DEBUG, "Start three point turn motion...")
 @log_on_end(logging.DEBUG, "Motion executed successfully")
 def kTurning():
     try:
@@ -48,7 +51,7 @@ def kTurning():
         time.sleep(1)
 
         px.backward(30)
-        time.sleep(0.7)
+        time.sleep(0.5)
         
         px.forward(0)
         time.sleep(1)
@@ -82,20 +85,36 @@ def kTurning():
     finally:
         px.forward(0)
 
+@log_on_start(logging.DEBUG, "Start forward motion...")
+@log_on_end(logging.DEBUG, "Motion executed successfully")
 def forwardBackward():
     try:
         px = Picarx()
         
         px.forward(30)
-        time.sleep(0.5)
-        px.backward(30)
-        time.sleep(0.5)
+        time.sleep(1)
 
         px.forward(0)
         time.sleep(1)
     finally:
         px.forward(0)
 
+@log_on_start(logging.DEBUG, "Start backward motion...")
+@log_on_end(logging.DEBUG, "Motion executed successfully")
+def backward():
+    try:
+        px = Picarx()
+        
+        px.backward(30)
+        time.sleep(1)
+
+        px.forward(0)
+        time.sleep(1)
+    finally:
+        px.forward(0)
+
+@log_on_start(logging.DEBUG, "Start parallel parking motion...")
+@log_on_end(logging.DEBUG, "Motion executed successfully")
 def parallelParking(direction):
     wheel_direction = 1
     if direction == 'l':
@@ -171,7 +190,7 @@ if __name__ == "__main__":
         if command == "a":
             forwardBackward()
         elif command == "b":
-            direction = input("\nEnter the direction:\n")
+            direction = input("\nEnter the direction (l/r):\n")
             parallelParking(direction)
         elif command == "c":
             kTurning()

@@ -23,9 +23,9 @@ def forwardBackward():
         px = Picarx()
         
         px.forward(30)
-        time.sleep(0.5)
+        time.sleep(1)
         px.backward(30)
-        time.sleep(0.5)
+        time.sleep(1)
 
         px.forward(0)
         time.sleep(1)
