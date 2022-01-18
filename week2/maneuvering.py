@@ -38,7 +38,7 @@ def kTurning():
         px.forward(0)
         time.sleep(1)
 
-        px.forward(40)
+        px.forward(60)
         time.sleep(0.7)
         
         px.forward(0)
@@ -51,7 +51,7 @@ def kTurning():
         px.forward(0)
         time.sleep(1)
 
-        px.backward(40)
+        px.backward(50)
         time.sleep(0.5)
         
         px.forward(0)
@@ -64,7 +64,7 @@ def kTurning():
         px.forward(0)
         time.sleep(1)
         
-        px.forward(40)
+        px.forward(60)
         time.sleep(1)   
 
         px.forward(0)
