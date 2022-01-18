@@ -65,7 +65,7 @@ def kTurning():
         time.sleep(1)
         
         px.forward(60)
-        time.sleep(1)   
+        time.sleep(1.4)   
 
         px.forward(0)
         time.sleep(1)
