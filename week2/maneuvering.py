@@ -25,8 +25,8 @@ def kTurning():
     try:
         px = Picarx()
 
-        px.forward(30)
-        time.sleep(1)
+        px.forward(40)
+        time.sleep(0.5)
         
         px.forward(0)
         time.sleep(1)
@@ -38,8 +38,8 @@ def kTurning():
         px.forward(0)
         time.sleep(1)
 
-        px.forward(30)
-        time.sleep(1.4)
+        px.forward(40)
+        time.sleep(0.7)
         
         px.forward(0)
         time.sleep(1)
@@ -51,8 +51,8 @@ def kTurning():
         px.forward(0)
         time.sleep(1)
 
-        px.backward(30)
-        time.sleep(1)
+        px.backward(40)
+        time.sleep(0.5)
         
         px.forward(0)
         time.sleep(1)
@@ -64,7 +64,7 @@ def kTurning():
         px.forward(0)
         time.sleep(1)
         
-        px.forward(30)
+        px.forward(40)
         time.sleep(1)   
 
         px.forward(0)
@@ -77,8 +77,8 @@ def kTurning():
         px.forward(0)
         time.sleep(1)
         
-        px.forward(30)
-        time.sleep(1.4)   
+        px.forward(40)
+        time.sleep(0.7)   
 
         px.forward(0)
         time.sleep(1)
