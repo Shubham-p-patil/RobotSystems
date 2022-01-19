@@ -1,4 +1,3 @@
-from inspect import _Object
 import sys,os
 # sys.path.append(r'/home/pi/RobotSystems/lib')
 _path = os.getcwd() + '/lib'
