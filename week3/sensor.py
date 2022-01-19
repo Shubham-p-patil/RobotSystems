@@ -1,7 +1,10 @@
 import sys,os
-# sys.path.append(r'/home/pi/RobotSystems/lib')
+
 _path = os.getcwd() + '/lib'
 sys.path.append(_path)
+
+from utils import reset_mcu
+reset_mcu()
 
 from adc import ADC
 
