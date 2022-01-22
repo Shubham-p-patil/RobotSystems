@@ -88,7 +88,7 @@ def kTurning():
 
 @log_on_start(logging.DEBUG, "Start forward motion...")
 @log_on_end(logging.DEBUG, "Motion executed successfully")
-def forwardBackward():
+def forward():
     try:
         px = Picarx()
         
@@ -186,16 +186,18 @@ def parallelParking(direction):
 
 if __name__ == "__main__":
     while True:
-        command = input("Select from the three maneuvering options below:\n(a) Forward and backward in straight lines or with different steering angles\n(b) Parallel-parking left and right\n(c) Three-point turning (K-turning) with initial turn to the left or right\n(d) Exit\nEnter Here : ")
+        command = input("Select from the three maneuvering options below:\n(a) Forward and backward in straight lines or with different steering angles\n(b) Backward in straight lines or with different steering angles\n(c) Parallel-parking left and right\n(d) Three-point turning (K-turning) with initial turn to the left or right\n(e) Exit\nEnter Here : ")
         
         if command == "a":
-            forwardBackward()
-        elif command == "b":
+            forward()
+        if command == "b":
+            backward()
+        elif command == "c":
             direction = input("\nEnter the direction (l/r):\n")
             parallelParking(direction)
-        elif command == "c":
-            kTurning()
         elif command == "d":
+            kTurning()
+        elif command == "e":
             break
 
 
