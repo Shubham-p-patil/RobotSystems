@@ -3,34 +3,25 @@ import sys,os
 _path = os.getcwd() + '/lib'
 sys.path.append(_path)
 
-from utils import reset_mcu
-reset_mcu()
 
-from adc import ADC
+try :
+    from adc import ADC
 
+    from utils import reset_mcu
+    reset_mcu()
+
+    time . sleep (0.01)
+except ImportError :
+    print (" This computer does not appear to be a PiCar - X system ( ezblock is not present ) . Shadowing hardware calls with substitute functions ")
+    from sim_ezblock import *
+    
 
 class Sensor(object):
-    def __init__(self,ref = 1000):
+    def __init__(self):
         self.chn_0 = ADC("A0")
         self.chn_1 = ADC("A1")
         self.chn_2 = ADC("A2")
-        self.ref = ref
-
-
-    def get_line_status(self,fl_list):
-
-        if fl_list[0] > self.ref and fl_list[1] > self.ref and fl_list[2] > self.ref:
-            return 'stop'
-            
-        elif fl_list[1] <= self.ref:
-            return 'forward'
         
-        elif fl_list[0] <= self.ref:
-            return 'right'
-
-        elif fl_list[2] <= self.ref:
-            return 'left'
-
     def get_grayscale_data(self):
         adc_value_list = []
         adc_value_list.append(self.chn_0.read())
@@ -39,9 +30,9 @@ class Sensor(object):
         return adc_value_list
 
 
-if __name__ == "__main__":
-    import time
-    GM = Sensor(950)
-    while True:
-        print(GM.get_grayscale_data())
-        time.sleep(1)
+# if __name__ == "__main__":
+#     import time
+#     GM = Sensor(950)
+#     while True:
+#         print(GM.get_grayscale_data())
+#         time.sleep(1)
