@@ -45,9 +45,9 @@ if __name__ == "__main__":
         control = Controller(car,scale)
         t = time.time()
         
-        for angle in range(0,-65,-1):
-            car.set_camera_servo1_angle(angle)
-            time.sleep(0.01)
+        # for angle in range(0,-65,-1):
+        #     car.set_camera_servo1_angle(angle)
+        #     time.sleep(0.01)
 
         while time.time() - t < runtime:
             ret,frame=cap.read()
